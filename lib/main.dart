@@ -7,9 +7,9 @@ void main() {
         backgroundColor: Colors.blueGrey,
         appBar: AppBar(
           backgroundColor: Colors.blueGrey[900],
-          title: Text('Folha de pagamento'),
+          title: const Text('Folha de pagamento'),
         ),
-        body: Center(
+        body: const Center(
           child: Image(
             image: AssetImage('imagens/calduceu.jpg'),
           ),
