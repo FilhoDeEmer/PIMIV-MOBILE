@@ -1,0 +1,4 @@
+#Wed Sep 20 10:24:13 BRT 2023
+base.0=C\:\\Users\\Gabriel\\Documents\\PIMIV\\PIMIV-MOBILE\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
