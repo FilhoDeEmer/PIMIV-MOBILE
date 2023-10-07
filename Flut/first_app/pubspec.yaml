@@ -72,9 +72,14 @@ flutter:
     - assets/images/logo.png
     - assets/images/aviao.png
     - assets/images/menu.png
-    - assets/images/ajuda-ic.png
     - assets/images/sair.png
-
+    - assets/images/perfil.png
+    - assets/images/dinheiro.png
+    - assets/images/relogio.png
+    - assets/images/ajuda-ic.png
+    - assets/images/ajuda.png
+    - assets/images/face.png
+    - assets/images/mao.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

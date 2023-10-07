@@ -1,6 +1,7 @@
 import 'package:first_app/esqueceu_senha.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginUser extends StatelessWidget {
   final Color color1;
@@ -112,6 +113,8 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 16.0),
                   TextField(
                     controller: _usernameController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     decoration: const InputDecoration(
                       labelText: 'CPF:',
                       labelStyle: TextStyle(
