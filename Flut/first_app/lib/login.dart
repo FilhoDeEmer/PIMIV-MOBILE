@@ -1,38 +1,23 @@
+// ignore_for_file: avoid_print
+
 import 'package:first_app/esqueceu_senha.dart';
-import 'package:flutter/foundation.dart';
+import 'package:first_app/principal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LoginUser extends StatelessWidget {
-  final Color color1;
-  final Color color2;
-
-  const LoginUser(this.color1, this.color2, {super.key});
-
-  const LoginUser.fromRGBO({super.key})
-      : color1 = const Color.fromRGBO(74, 229, 229, 0.992),
-        color2 = const Color.fromRGBO(225, 239, 239, 0.593);
+  const LoginUser({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginPage(
-        color1: color1,
-        color2: color2,
-      ),
+    return const MaterialApp(
+      home: LoginPage(),
     );
   }
 }
 
 class LoginPage extends StatefulWidget {
-  final Color color1;
-  final Color color2;
-
-  const LoginPage({
-    Key? key,
-    required this.color1,
-    required this.color2,
-  }) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -47,43 +32,38 @@ class _LoginPageState extends State<LoginPage> {
   void _login() {
     String username = _usernameController.text;
     String password = _passwordController.text;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Principal(),
+      ),
+    );
 
-    // Você pode adicionar lógica de autenticação aqui.
-    // Por enquanto, apenas imprimiremos os valores digitados.
-    if (kDebugMode) {
-      print('Username: $username');
-      print('Password: $password');
-    }
+    print('Username: $username');
+    print('Password: $password');
   }
 
-  void _showEsqueceuSuaSenhaDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: EsqueceuSuaSenha(
-            widget.color1,
-            widget.color2,
-          ),
-        );
-      },
+  void _esqueceuSenhaPressed() {
+    // Navegue para a página EsqueceuSuaSenha quando o botão for pressionado.
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => EsqueceuSuaSenha()),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset:
-          true, // Evita o overflow na parte inferior da tela quando o teclado é exibido
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
-        // Use SingleChildScrollView para permitir que o conteúdo seja rolado
         child: Container(
-          height: MediaQuery.of(context)
-              .size
-              .height, // Defina a altura para preencher toda a tela
-          decoration: BoxDecoration(
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [widget.color1, widget.color2],
+              colors: [
+                Color.fromRGBO(74, 229, 229, 0.992),
+                Color.fromRGBO(225, 239, 239, 0.593),
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -127,8 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 16.0),
                   TextField(
                     controller: _passwordController,
-                    obscureText:
-                        _obscureText, // Define o obscureText com base na variável _obscureText
+                    obscureText: _obscureText,
                     decoration: InputDecoration(
                       labelText: 'Senha',
                       labelStyle: const TextStyle(
@@ -139,15 +118,13 @@ class _LoginPageState extends State<LoginPage> {
                       suffixIcon: TextButton(
                         onPressed: () {
                           setState(() {
-                            _obscureText =
-                                !_obscureText; // Inverte o estado da senha obscurecida.
+                            _obscureText = !_obscureText;
                           });
                         },
                         child: Text(
                           _obscureText ? 'Mostrar' : 'Ocultar',
                           style: const TextStyle(
-                            color: Color.fromARGB(
-                                255, 33, 65, 243), // Cor do texto do botão
+                            color: Color.fromARGB(255, 33, 65, 243),
                           ),
                         ),
                       ),
@@ -157,9 +134,8 @@ class _LoginPageState extends State<LoginPage> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {
-                        _showEsqueceuSuaSenhaDialog(context);
-                      },
+                      onPressed:
+                          _esqueceuSenhaPressed, // Chama a função ao clicar
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                       ),
@@ -176,9 +152,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 16.0),
                   ElevatedButton(
-                    onPressed: _login,
+                    onPressed: _login, // Chama a função ao clicar
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(246, 27, 28, 27),
+                      backgroundColor: const Color.fromARGB(255, 27, 28, 27),
                       foregroundColor: const Color(0xffdfae62),
                       minimumSize: const Size(200, 50),
                       shape: RoundedRectangleBorder(

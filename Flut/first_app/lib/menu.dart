@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Menu1 extends StatelessWidget {
-  const Menu1(this.color, this.color1, {Key? key}) : super(key: key);
-  final Color color;
-  final Color color1;
+  const Menu1({super.key});
 
   void _onMinhasInformacoesButtonPressed() {
     // Coloque a ação desejada aqui
@@ -45,9 +43,11 @@ class Menu1 extends StatelessWidget {
 
     return Column(
       children: [
-        SizedBox(
+        Container(
+          // Container para tornar o fundo transparente
           width: screenWidth,
           height: 331,
+          color: Colors.transparent, // Define a cor de fundo como transparente
           child: Stack(
             children: [
               Positioned(

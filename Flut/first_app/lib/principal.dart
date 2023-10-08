@@ -2,17 +2,14 @@ import 'package:first_app/menu.dart';
 import 'package:flutter/material.dart';
 
 class Principal extends StatelessWidget {
-  const Principal({Key? key}) : super(key: key);
+  const Principal({super.key});
 
   void _onMenuButtonPressed(BuildContext context) {
     // Abra a tela do menu
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const Menu1(
-          Color(0xFFE3E3FF), // Cor de fundo do Menu1
-          Color(0xFF212157),
-        ),
+        builder: (context) => const Menu1(),
       ),
     );
   }

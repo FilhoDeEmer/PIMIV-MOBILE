@@ -1,24 +1,35 @@
+import 'package:first_app/enviado.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmacaoEnviar extends StatelessWidget {
   final String cpf;
-  final String email;
 
-  const ConfirmacaoEnviar(
-    Color color,
-    Color color1, {
+  const ConfirmacaoEnviar({
     required this.cpf,
-    required this.email,
     Key? key,
   }) : super(key: key);
+
+  void _naoPressed(BuildContext context) {
+    Navigator.pop(context);
+  }
+
+  void _simPressed(BuildContext context) {
+    // Adicione o parâmetro context aqui
+    // Adicione a lógica que desejar aqui
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Enviado()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(0, 114, 114, 114),
       body: Center(
         child: Container(
-          width: 360,
-          height: 322,
+          width: 300,
+          height: 300,
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topCenter,
@@ -66,32 +77,15 @@ class ConfirmacaoEnviar extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text(
-                  'E-MAIL:',
-                  style: TextStyle(
-                    fontFamily: 'Quicksand',
-                    fontSize: 20,
-                    decoration: TextDecoration.underline,
-                    color: Color(0xff000000),
-                  ),
-                ),
-                Text(
-                  email,
-                  style: const TextStyle(
-                    fontFamily: 'Quicksand',
-                    fontSize: 18,
-                    color: Color(0xff000000),
-                  ),
-                ),
-                const SizedBox(height: 30),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
-                      width: 130,
-                      height: 40,
+                      width: 110,
+                      height: 40, // Ajuste a altura do botão NÃO aqui
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            _naoPressed(context), // Chame a função _naoPressed
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF1B1C1B),
                           foregroundColor: const Color(0xffdfae62),
@@ -101,6 +95,7 @@ class ConfirmacaoEnviar extends StatelessWidget {
                         ),
                         child: const Text(
                           'NÃO',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Color(0xFFDFAE62),
                             fontSize: 18,
@@ -109,12 +104,11 @@ class ConfirmacaoEnviar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 30),
                     SizedBox(
-                      width: 130,
-                      height: 40,
+                      width: 110,
+                      height: 40, // Ajuste a altura do botão SIM aqui
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => _simPressed(context),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF1B1C1B),
                           foregroundColor: const Color(0xffdfae62),
@@ -124,6 +118,7 @@ class ConfirmacaoEnviar extends StatelessWidget {
                         ),
                         child: const Text(
                           'SIM',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Color(0xFFDFAE62),
                             fontSize: 18,

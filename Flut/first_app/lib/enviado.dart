@@ -1,17 +1,26 @@
 // import 'dart:math';
 
+import 'package:first_app/login.dart';
 import 'package:flutter/material.dart';
 
 class Enviado extends StatelessWidget {
-  const Enviado(Color color, Color color1, {Key? key}) : super(key: key);
+  const Enviado({super.key});
+
+  void _enviadoPress(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginUser()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(0, 114, 114, 114),
       body: Center(
         child: Container(
-          width: 360,
-          height: 322,
+          width: 300,
+          height: 300,
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topCenter,
@@ -32,15 +41,15 @@ class Enviado extends StatelessWidget {
                 const Align(
                   child: SizedBox(
                     width: 300,
-                    height: 110,
+                    height: 130,
                     child: Text(
                       'Um e-mail foi enviado ao suporte solicitando a emissão de uma nova senha. \n'
-                      'O prazo para resposta é de 48 horas.',
+                      'O prazo para resposta é de 48 horas no e-mail cadastrado.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontFamily: 'Quicksand',
                           fontSize: 18,
-                          height: 1.25,
+                          height: 1,
                           color: Colors.black),
                     ),
                   ),
@@ -58,7 +67,7 @@ class Enviado extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -66,7 +75,7 @@ class Enviado extends StatelessWidget {
                       width: 130,
                       height: 40,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => (_enviadoPress(context)),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF1B1C1B),
                           foregroundColor: const Color(0xffdfae62),
