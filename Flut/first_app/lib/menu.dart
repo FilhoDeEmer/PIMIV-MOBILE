@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 
-class Menu1 extends StatelessWidget {
-  const Menu1({super.key});
-
-  void _onMinhasInformacoesButtonPressed() {
-    // Coloque a ação desejada aqui
-  }
-
-  void _onFolhaDePagamentoButtonPressed() {
-    // Coloque a ação desejada aqui
-  }
-
-  void _onBeneficiosButtonPressed() {
-    // Coloque a ação desejada aqui
-  }
-
-  void _onRelatorioDeHorasButtonPressed() {
-    // Coloque a ação desejada aqui
-  }
-
-  void _onAjudaButtonPressed() {
-    // Coloque a ação desejada aqui
-  }
+class Menu1Dialog extends StatelessWidget {
+  const Menu1Dialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    void onMinhasInformacoesButtonPressed() {
+      // Coloque a ação desejada para Minhas Informações aqui
+    }
+
+    void onFolhaDePagamentoButtonPressed() {
+      // Coloque a ação desejada para Folha de Pagamento aqui
+    }
+
+    void onBeneficiosButtonPressed() {
+      // Coloque a ação desejada para Benefícios aqui
+    }
+
+    void onRelatorioDeHorasButtonPressed() {
+      // Coloque a ação desejada para Relatório de Horas aqui
+    }
+
+    void onAjudaButtonPressed() {
+      // Coloque a ação desejada para Ajuda aqui
+    }
+
     const AssetImage folhadepagamentoIcon =
         AssetImage('assets/images/dinheiro.png');
     const AssetImage minhasinformacoesIcon =
@@ -36,54 +36,45 @@ class Menu1 extends StatelessWidget {
 
     double screenWidth = MediaQuery.of(context).size.width;
 
-    // Calcule a diferença de espaço entre "Minhas Informações" e "Folha de Pagamento"
-    double buttonSpacing = 167 -
-        126 +
-        -1; // Espaçamento entre "Minhas Informações" e "Folha de Pagamento"
-
-    return Column(
-      children: [
-        Container(
-          // Container para tornar o fundo transparente
-          width: screenWidth,
-          height: 331,
-          color: Colors.transparent, // Define a cor de fundo como transparente
-          child: Stack(
-            children: [
-              Positioned(
-                left: 0,
-                top: 5,
-                child: Container(
-                  width: screenWidth,
-                  height: 310,
-                  decoration: const ShapeDecoration(
-                    color: Color(0xFFE3E3FF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
-                      ),
-                    ),
-                  ),
+    return AlertDialog(
+      backgroundColor: Colors.transparent,
+      contentPadding: EdgeInsets.zero,
+      content: Container(
+        width: 400,
+        height: 600,
+        constraints: const BoxConstraints(maxHeight: 348),
+        color: const Color(0xFFE3E3FF),
+        child: Column(
+          children: [
+            Container(
+              width: screenWidth,
+              padding: const EdgeInsets.all(16),
+              child: const Text(
+                'Olá Pedro',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF212157),
+                  fontSize: 25,
+                  fontFamily: 'Quicksand',
+                  fontWeight: FontWeight.w700,
+                  height: 0,
                 ),
               ),
-              Positioned(
-                left: 0,
-                top: 126,
-                child: SizedBox(
-                  width: screenWidth,
-                  height: 35,
-                  child: TextButton(
-                    onPressed: _onMinhasInformacoesButtonPressed,
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  TextButton(
+                    onPressed: onMinhasInformacoesButtonPressed,
                     style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFE3E3FF),
                       elevation: 4,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -110,26 +101,16 @@ class Menu1 extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                top:
-                    126 + buttonSpacing, // Aplicar o espaçamento calculado aqui
-                child: SizedBox(
-                  width: screenWidth,
-                  height: 35,
-                  child: TextButton(
-                    onPressed: _onFolhaDePagamentoButtonPressed,
+                  const SizedBox(height: 6),
+                  TextButton(
+                    onPressed: onFolhaDePagamentoButtonPressed,
                     style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFE3E3FF),
                       elevation: 4,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -156,26 +137,16 @@ class Menu1 extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                top: 126 +
-                    buttonSpacing * 2, // Espaçamento igual ao botão anterior
-                child: SizedBox(
-                  width: screenWidth,
-                  height: 35,
-                  child: TextButton(
-                    onPressed: _onRelatorioDeHorasButtonPressed,
+                  const SizedBox(height: 6),
+                  TextButton(
+                    onPressed: onRelatorioDeHorasButtonPressed,
                     style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFE3E3FF),
                       elevation: 4,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -202,26 +173,16 @@ class Menu1 extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                top: 126 +
-                    buttonSpacing * 3, // Espaçamento igual ao botão anterior
-                child: SizedBox(
-                  width: screenWidth,
-                  height: 35,
-                  child: TextButton(
-                    onPressed: _onBeneficiosButtonPressed,
+                  const SizedBox(height: 6),
+                  TextButton(
+                    onPressed: onBeneficiosButtonPressed,
                     style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFE3E3FF),
                       elevation: 4,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -248,26 +209,16 @@ class Menu1 extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                top: 126 +
-                    buttonSpacing * 4, // Espaçamento igual ao botão anterior
-                child: SizedBox(
-                  width: screenWidth,
-                  height: 35,
-                  child: TextButton(
-                    onPressed: _onAjudaButtonPressed,
+                  const SizedBox(height: 6),
+                  TextButton(
+                    onPressed: onAjudaButtonPressed,
                     style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFE3E3FF),
                       elevation: 4,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -294,40 +245,12 @@ class Menu1 extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
-              Positioned(
-                left: screenWidth *
-                    0.4, // Posição horizontal relativa à largura da tela
-                top: 60,
-                child: const Text(
-                  'Olá Pedro',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF212157),
-                    fontSize: 25,
-                    fontFamily: 'Quicksand',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: screenWidth *
-                    0.56, // Posição horizontal relativa à largura da tela
-                top: 38,
-                child: Container(
-                  width: 48,
-                  height: 48,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(),
-                  child: const Stack(children: []),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

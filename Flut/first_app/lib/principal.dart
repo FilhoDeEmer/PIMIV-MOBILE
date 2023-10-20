@@ -1,21 +1,25 @@
 import 'package:first_app/menu.dart';
+import 'package:first_app/minhas_info.dart';
+import 'package:first_app/tela_de_sair.dart';
+// import 'package:first_app/tela_de_sair.dart';
 import 'package:flutter/material.dart';
 
 class Principal extends StatelessWidget {
   const Principal({super.key});
 
   void _onMenuButtonPressed(BuildContext context) {
-    // Abra a tela do menu
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => const Menu1(),
-      ),
+      MaterialPageRoute(builder: (context) => const Menu1Dialog()),
     );
   }
 
   void _onMinhasInformacoesButtonPressed(BuildContext context) {
-    // Coloque a ação desejada aqui
+    // Navegue para a tela MinhasInfo quando o botão for pressionado
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MinhasInf()),
+    );
   }
 
   void _onFolhaDePagamentoButtonPressed(BuildContext context) {
@@ -36,6 +40,7 @@ class Principal extends StatelessWidget {
 
   void _onSairButtonPressed(BuildContext context) {
     // Coloque a ação desejada aqui
+    ConfirmSairDialog.show(context);
   }
 
   @override
@@ -45,7 +50,7 @@ class Principal extends StatelessWidget {
         child: Container(
           width: double.infinity,
           decoration: const BoxDecoration(
-            color: Color(0xffffffff),
+            color: Colors.transparent,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
