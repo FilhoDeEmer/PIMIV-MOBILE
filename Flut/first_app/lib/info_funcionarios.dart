@@ -14,57 +14,9 @@ class MinhasInf extends StatelessWidget {
           decoration: const BoxDecoration(color: Colors.white),
           child: Stack(
             children: [
-              Positioned(
-                left: 16,
-                top: 728,
-                child: SizedBox(
-                  width: 328,
-                  height: 48,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 328,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFE3E3FF),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            shadows: const [
-                              BoxShadow(
-                                color: Color(0x3F212157),
-                                blurRadius: 4,
-                                offset: Offset(0, 4),
-                                spreadRadius: 0,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        left: 126,
-                        top: 11,
-                        child: Text(
-                          'VOLTAR',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF212157),
-                            fontSize: 20,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.w700,
-                            height: 0,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               const Positioned(
                 left: 0,
-                top: 576,
+                top: 570,
                 child: SizedBox(
                   width: 360,
                   height: 140,
@@ -1346,15 +1298,15 @@ class MinhasInf extends StatelessWidget {
                     children: [
                       Positioned(
                         left: 124,
-                        top: 119,
+                        top: 105,
                         child: SizedBox(
                           width: 112,
-                          height: 13.55,
+                          height: 50,
                           child: Text(
                             'MINHAS INFORMAÇÕES',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Color(0xFFE3E3FF),
+                              color: Color(0xFF212157),
                               fontSize: 14,
                               fontFamily: 'Quicksand',
                               fontWeight: FontWeight.w700,
@@ -1372,7 +1324,7 @@ class MinhasInf extends StatelessWidget {
                 top: 0,
                 child: SizedBox(
                   width: 360,
-                  height: 103,
+                  height: 100,
                   child: Stack(
                     children: [
                       Positioned(
@@ -1388,7 +1340,7 @@ class MinhasInf extends StatelessWidget {
                       Positioned(
                         left: 32,
                         top: 26,
-                        child: Container(
+                        child: SizedBox(
                           width: 64,
                           height: 51.95,
                           child: Image.asset(
