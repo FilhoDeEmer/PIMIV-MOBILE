@@ -1,3 +1,4 @@
+import 'package:first_app/ajudar.dart';
 import 'package:first_app/beneficios.dart';
 import 'package:first_app/folha_pagamentos.dart';
 import 'package:first_app/info_funcionarios.dart';
@@ -31,7 +32,10 @@ class Principal extends StatelessWidget {
   }
 
   void _onAjudaButtonPressed(BuildContext context) {
-    // Coloque a ação desejada aqui
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Ajuda()),
+    );
   }
 
   void _onSairButtonPressed(BuildContext context) {
