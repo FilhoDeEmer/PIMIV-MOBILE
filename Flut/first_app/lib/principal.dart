@@ -1,4 +1,3 @@
-import 'package:first_app/ajudar.dart';
 import 'package:first_app/beneficios.dart';
 import 'package:first_app/folha_pagamentos.dart';
 import 'package:first_app/info_funcionarios.dart';
@@ -7,35 +6,39 @@ import 'package:first_app/tela_de_sair.dart';
 import 'package:flutter/material.dart';
 
 class Principal extends StatelessWidget {
-  const Principal({super.key});
+  const Principal({Key? key, required this.funcionarioData}) : super(key: key);
+  final Map<String, dynamic>? funcionarioData;
 
   void _onMinhasInformacoesButtonPressed(BuildContext context) {
-    // Navegue para a tela MinhasInfo quando o botão for pressionado
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MinhasInf()),
+      MaterialPageRoute(
+        builder: (context) => MinhasInf(funcionarioData: funcionarioData),
+      ),
     );
   }
 
   void _onFolhaDePagamentoButtonPressed(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const FolhaPag()),
+      MaterialPageRoute(
+        builder: (context) => FolhaPag(funcionarioData: funcionarioData),
+      ),
     );
   }
 
   void _onBeneficiosButtonPressed(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const Beneficio()),
+      MaterialPageRoute(
+        builder: (context) => Beneficio(funcionarioData: funcionarioData),
+      ),
     );
   }
 
-  void _onAjudaButtonPressed(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const Ajuda()),
-    );
+  double calcularValorTotalAReceber(Map<String, dynamic> funcionario) {
+    double salario = funcionario["salario"] ?? 0.0;
+    return salario;
   }
 
   void _onSairButtonPressed(BuildContext context) {
@@ -45,6 +48,7 @@ class Principal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double valorTotalAReceber = calcularValorTotalAReceber(funcionarioData!);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -80,7 +84,7 @@ class Principal extends StatelessWidget {
                           maxWidth: 111,
                         ),
                         child: const Text(
-                          'Pedro\nHermes Co.',
+                          '\nHermes Co.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Quicksand',
@@ -117,7 +121,7 @@ class Principal extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.fromLTRB(0, 0, 77, 0),
                             child: const Text(
-                              'Valor a receber:',
+                              '          Salário:',
                               style: TextStyle(
                                 fontFamily: 'Quicksand',
                                 fontSize: 18,
@@ -127,42 +131,10 @@ class Principal extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Text(
-                            ' R\$ 1.509,81',
+                          Text(
+                            ' R\$ ${valorTotalAReceber.toStringAsFixed(2)}',
                             textAlign: TextAlign.right,
-                            style: TextStyle(
-                              fontFamily: 'Quicksand',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              height: 1.25,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                            child: const Text(
-                              'Previsão de pagamento:',
-                              style: TextStyle(
-                                fontFamily: 'Quicksand',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                height: 1.25,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
-                            ),
-                          ),
-                          const Text(
-                            '08/05/2023',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'Quicksand',
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
@@ -291,61 +263,6 @@ class Principal extends StatelessWidget {
                                 color: Color(0xff212157),
                               ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 39),
-                      child: ElevatedButton(
-                        onPressed: () => _onAjudaButtonPressed(context),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                        ),
-                        child: Container(
-                          constraints: const BoxConstraints(maxWidth: 300),
-                          height: 48.0,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffe3e3ff),
-                            borderRadius: BorderRadius.circular(8),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color(0x3f212157),
-                                offset: Offset(0, 4),
-                                blurRadius: 2,
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(100, 0.67, 50, 0),
-                                child: const Text(
-                                  'Ajuda',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: 'Quicksand',
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.25,
-                                    color: Color(0xff212157),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(0, 0, 0, 0.33),
-                                width: 25.33,
-                                height: 25.33,
-                                child: Image.asset(
-                                  'assets/images/ajuda-ic.png',
-                                  width: 25.33,
-                                  height: 25.33,
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ),
